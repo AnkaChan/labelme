@@ -1202,6 +1202,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def paintCanvas(self):
         assert not self.image.isNull(), "cannot paint null image"
         self.canvas.scale = 0.01 * self.zoomWidget.value()
+        #print("Adjust size to :", self.canvas.scale )
         self.canvas.adjustSize()
         self.canvas.update()
 
