@@ -6,6 +6,7 @@ keep_prev: false
 logger_level: info
 
 flags: null
+label_flags: null
 labels: null
 file_search: null
 sort_labels: true
