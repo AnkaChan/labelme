@@ -85,7 +85,8 @@ class LabelFile(object):
             shapes = (
                 (
                     s['label'],
-                    s['points'],
+                    #s['points'],
+                    [[p[0] + 0.5, p[1] + 0.5, ] for p in s['points']],
                     s['line_color'],
                     s['fill_color'],
                     s.get('shape_type', 'polygon'),
@@ -93,6 +94,11 @@ class LabelFile(object):
                 )
                 for s in data['shapes']
             )
+
+            # Shift from pixel-centered coordinates to top left centered coordinates
+            #for s in shapes:
+            #    s[1] = [[p[0] + 0.5, p[1] + 0.5, ] for p in s[1]]
+
         except Exception as e:
             raise LabelFileError(e)
 
@@ -161,6 +167,11 @@ class LabelFile(object):
             imageHeight=imageHeight,
             imageWidth=imageWidth,
         )
+
+        #Shift from top left centered to coordinates pixel-centered coordinates
+        for s in data['shapes']:
+           s['points'] = [[p[0] - 0.5, p[1] - 0.5, ] for p in s['points']]
+
         for key, value in otherData.items():
             data[key] = value
         try:

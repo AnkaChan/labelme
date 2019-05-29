@@ -487,7 +487,7 @@ class Canvas(QtWidgets.QWidget):
         p = self._painter
         p.begin(self)
         p.setRenderHint(QtGui.QPainter.Antialiasing)
-        p.setRenderHint(QtGui.QPainter.HighQualityAntialiasing)
+        #p.setRenderHint(QtGui.QPainter.HighQualityAntialiasing)
         #p.setRenderHint(QtGui.QPainter.SmoothPixmapTransform)
 
         p.scale(self.scale, self.scale)
